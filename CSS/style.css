@@ -1,0 +1,803 @@
+
+/* 1. Basic settings */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #0b0d14;
+    color: #f5f5f5;
+    line-height: 1.6;
+}
+
+/* 2. Website header */
+header {
+    background-color: #121522;
+    padding: 20px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #272b3b;
+}
+
+header h1 {
+    margin: 0;
+    color: #a78bfa;
+    font-size: 28px;
+}
+
+nav {
+    display: flex;
+    gap: 24px;
+}
+
+nav a {
+    color: #d1d5e5;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #a78bfa;
+}
+
+/* 3. Main content */
+main {
+    max-width: 1200px;
+    width: 86%;
+    margin: 0 auto;
+}
+
+/* 4. Hero section */
+#home {
+    padding: 65px 35px;
+    margin: 30px 0;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #252044, #161a2c, #10121b);
+    border: 1px solid #302b50;
+}
+
+#home > p:first-child {
+    color: #c4b5fd;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+#home h2 {
+    font-size: clamp(30px, 5vw, 48px);
+    line-height: 1.2;
+    margin: 15px 0;
+}
+
+#home p:last-child {
+    color: #b7bbce;
+}
+
+/* 5. Movie section */
+#movies,
+#playlist {
+    padding: 25px 0;
+    margin-bottom: 25px;
+}
+
+#movies > h2,
+#playlist > h2 {
+    font-size: 28px;
+    margin-bottom: 18px;
+}
+
+/* 6. Search field */
+#movie-search {
+    display: block;
+    width: 100%;
+    max-width: 430px;
+    padding: 13px 15px;
+    margin: 10px 0 25px;
+    background-color: #171a28;
+    border: 1px solid #353a50;
+    border-radius: 8px;
+    color: white;
+    font-size: 15px;
+}
+
+#movie-search:focus {
+    outline: 2px solid #a78bfa;
+    border-color: transparent;
+}
+
+/* 7. Movie cards */
+.movie-list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.movie-card {
+    background-color: #151824;
+    border: 1px solid #292e41;
+    border-radius: 14px;
+    padding: 16px;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.movie-card:hover {
+    transform: translateY(-5px);
+    border-color: #8b78d9;
+}
+
+.poster {
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #282443, #1a2034);
+    border-radius: 10px;
+    font-size: 48px;
+}
+
+.movie-card h3 {
+    font-size: 20px;
+    margin: 14px 0 5px;
+}
+
+.movie-card p {
+    color: #a9afc3;
+    font-size: 14px;
+    margin: 7px 0;
+}
+
+/* 8. Buttons */
+button {
+    margin-top: 12px;
+    padding: 11px 14px;
+    width: 100%;
+    border: none;
+    border-radius: 8px;
+    background-color: #8b78e6;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #735dd0;
+}
+
+/* 9. Playlist section */
+#playlist {
+    background-color: #151824;
+    border: 1px solid #292e41;
+    border-radius: 14px;
+    padding: 25px;
+}
+
+#playlist p {
+    color: #b7bbce;
+}
+
+/* 10. Footer */
+footer {
+    margin-top: 45px;
+    padding: 25px 7%;
+    text-align: center;
+    color: #9298ad;
+    background-color: #121522;
+    border-top: 1px solid #272b3b;
+}
+
+/* 11. Mobile responsive design */
+@media (max-width: 700px) {
+    header {
+        padding: 18px 7%;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    nav {
+        gap: 18px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    main {
+        width: 90%;
+    }
+
+    #home {
+        padding: 35px 22px;
+    }
+
+    .movie-list {
+        grid-template-columns: 1fr;
+    }
+}
+/* Individual movie item in the playlist */
+.playlist-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid #292e41;
+}
+
+.playlist-item p {
+    margin: 0;
+}
+
+.playlist-item button {
+    width: auto;
+    min-width: 90px;
+    margin-top: 0;
+}
+
+#playlist-summary {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+@media (max-width: 700px) {
+    .playlist-item {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+#undo-button {
+    width: auto;
+    margin: 0 0 20px;
+    padding: 10px 18px;
+}
+
+#undo-button:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+/* Upcoming Queue section */
+#upcoming-queue {
+    background-color: #151824;
+    border: 1px solid #292e41;
+    border-radius: 14px;
+    padding: 25px;
+    margin: 30px 0;
+}
+
+#queue-items {
+    margin: 20px 0;
+}
+
+.queue-button {
+    background-color: #293047;
+    border: 1px solid #454d6b;
+}
+
+.queue-button:hover {
+    background-color: #38415d;
+}
+
+#play-next-button {
+    width: auto;
+    min-width: 180px;
+}
+
+#play-next-button:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+/* Movie Tree Explorer */
+#movie-tree {
+    background-color: #151824;
+    border: 1px solid #292e41;
+    border-radius: 14px;
+    padding: 25px;
+    margin: 30px 0;
+}
+
+#tree-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 20px 0;
+}
+
+#tree-controls button {
+    width: auto;
+    margin: 0;
+}
+
+#tree-results {
+    padding-left: 28px;
+    line-height: 2;
+    color: #d1d5e5;
+}
+
+#tree-search-input {
+    display: block;
+    width: 100%;
+    max-width: 430px;
+    padding: 13px;
+    margin: 12px 0;
+    border-radius: 8px;
+    border: 1px solid #353a50;
+    background-color: #171a28;
+    color: white;
+    font-size: 15px;
+}
+
+#tree-search-button {
+    width: auto;
+}
+
+#tree-search-result {
+    color: #c4b5fd;
+    overflow-wrap: anywhere;
+}
+
+/* Movie Graph Explorer */
+#movie-graph {
+    background-color: #151824;
+    border: 1px solid #292e41;
+    border-radius: 14px;
+    padding: 25px;
+    margin: 30px 0;
+}
+
+#graph-start {
+    display: block;
+    width: 100%;
+    max-width: 430px;
+    padding: 12px;
+    margin: 12px 0 20px;
+    background-color: #171a28;
+    color: white;
+    border: 1px solid #353a50;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+#graph-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+#graph-controls button {
+    width: auto;
+    margin: 0;
+}
+
+#graph-results {
+    padding-left: 28px;
+    line-height: 2;
+    color: #d1d5e5;
+}
+
+#graph-info {
+    color: #a9afc3;
+    font-size: 14px;
+}
+
+/* Movie Graph Explorer */
+#movie-graph {
+    background-color: #151824;
+    border: 1px solid #292e41;
+    border-radius: 14px;
+    padding: 25px;
+    margin: 30px 0;
+}
+
+#graph-start {
+    display: block;
+    width: 100%;
+    max-width: 430px;
+    padding: 12px;
+    margin: 12px 0 20px;
+    background-color: #171a28;
+    color: white;
+    border: 1px solid #353a50;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+#graph-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+#graph-controls button {
+    width: auto;
+    margin: 0;
+}
+
+#graph-results {
+    padding-left: 28px;
+    line-height: 2;
+    color: #d1d5e5;
+}
+
+#graph-info {
+    color: #a9afc3;
+    font-size: 14px;
+}
+
+/* Movie sorting controls */
+#sort-controls {
+    background-color: #151824;
+    border: 1px solid #292e41;
+    border-radius: 14px;
+    padding: 20px;
+    margin: 25px 0;
+}
+
+#sort-controls h3 {
+    margin-top: 0;
+}
+
+#sort-controls p {
+    color: #b7bbce;
+}
+
+.sort-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 18px 0;
+}
+
+.sort-buttons button {
+    width: auto;
+    margin-top: 0;
+}
+
+#sort-status {
+    overflow-wrap: anywhere;
+    font-size: 14px;
+    margin-bottom: 0;
+}
+
+@media (max-width: 700px) {
+    .sort-buttons {
+        flex-direction: column;
+    }
+
+    .sort-buttons button {
+        width: 100%;
+    }
+}
+
+/* Movie Marathon Planner */
+#marathon-planner {
+    background-color: #151824;
+    border: 1px solid #292e41;
+    border-radius: 14px;
+    padding: 25px;
+    margin: 30px 0;
+}
+
+#marathon-planner label {
+    display: block;
+    margin: 18px 0 8px;
+    color: #d1d5e5;
+}
+
+#available-minutes {
+    display: block;
+    width: 100%;
+    max-width: 320px;
+    padding: 12px;
+    background-color: #171a28;
+    color: white;
+    border: 1px solid #353a50;
+    border-radius: 8px;
+    font-size: 16px;
+    margin-bottom: 12px;
+}
+
+#plan-marathon {
+    width: auto;
+}
+
+#marathon-summary {
+    color: #c4b5fd;
+    font-weight: bold;
+    margin-top: 20px;
+    overflow-wrap: anywhere;
+}
+
+#marathon-planner ul {
+    padding-left: 25px;
+    line-height: 2;
+    color: #d1d5e5;
+}
+
+#marathon-planner h3 {
+    margin-top: 25px;
+}
+
+/* Search Algorithms Explorer */
+#algorithm-search {
+    background-color: #151824;
+    border: 1px solid #292e41;
+    border-radius: 14px;
+    padding: 25px;
+    margin: 30px 0;
+}
+
+#algorithm-search label {
+    display: block;
+    margin: 18px 0 8px;
+    color: #d1d5e5;
+}
+
+#algorithm-search-input {
+    display: block;
+    width: 100%;
+    max-width: 430px;
+    padding: 12px;
+    margin: 12px 0 18px;
+    background-color: #171a28;
+    border: 1px solid #353a50;
+    border-radius: 8px;
+    color: white;
+    font-size: 15px;
+}
+
+.algorithm-search-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.algorithm-search-buttons button {
+    width: auto;
+    margin-top: 0;
+}
+
+#algorithm-search-result {
+    margin-top: 20px;
+    color: #c4b5fd;
+    overflow-wrap: anywhere;
+}
+
+@media (max-width: 700px) {
+    .algorithm-search-buttons {
+        flex-direction: column;
+    }
+
+    .algorithm-search-buttons button {
+        width: 100%;
+    }
+}
+
+/* Movie poster images */
+.poster {
+    height: 300px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #252443, #171a28);
+    border-radius: 10px;
+}
+
+.poster img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+/* Smooth poster hover effect */
+.movie-card:hover .poster img {
+    transform: scale(1.04);
+}
+
+/* Make movie cards feel more polished */
+.movie-card {
+    overflow: hidden;
+}
+
+.movie-card h3 {
+    margin-top: 16px;
+}
+
+.movie-card button {
+    transition: background-color 0.2s ease,
+                transform 0.2s ease;
+}
+
+.movie-card button:hover {
+    transform: translateY(-1px);
+}
+
+/* ===== CineQueue: Professional Movie Cards ===== */
+
+.movie-list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    align-items: stretch;
+}
+
+.movie-card {
+    background: linear-gradient(180deg, #191c2b, #11131c);
+    border: 1px solid #2d3247;
+    border-radius: 16px;
+    padding: 14px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.movie-card:hover {
+    transform: translateY(-6px);
+    border-color: #8b78e6;
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* Poster container */
+.movie-card .poster {
+    height: 300px;
+    width: 100%;
+    margin-bottom: 14px;
+    overflow: hidden;
+    background: #0c0e15;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.movie-card .poster img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+}
+
+.movie-card:hover .poster img {
+    transform: scale(1.04);
+}
+
+/* Movie title */
+.movie-card h3 {
+    font-size: 21px;
+    line-height: 1.3;
+    color: #ffffff;
+    margin: 8px 0 10px;
+}
+
+/* Genre and release year */
+.movie-card p:nth-of-type(1) {
+    display: inline-block;
+    width: fit-content;
+    max-width: 100%;
+    background: #26213f;
+    color: #c4b5fd;
+    border-radius: 20px;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* Movie duration */
+.movie-card p:nth-of-type(2) {
+    color: #b7bbce;
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+
+/* Buttons inside cards */
+.movie-card button {
+    width: 100%;
+    border-radius: 9px;
+    padding: 12px;
+    font-size: 13px;
+    letter-spacing: 0.2px;
+}
+
+/* Tablet layout */
+@media (max-width: 900px) {
+    .movie-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+    }
+}
+
+/* Mobile layout */
+@media (max-width: 560px) {
+    .movie-list {
+        grid-template-columns: 1fr;
+    }
+
+    .movie-card .poster {
+        height: 320px;
+    }
+
+    .movie-card h3 {
+        font-size: 20px;
+    }
+}
+
+/* Add New Movie Form */
+#add-movie-section {
+    background: linear-gradient(135deg, #191c2b, #11131c);
+    border: 1px solid #2d3247;
+    border-radius: 16px;
+    padding: 25px;
+    margin: 30px 0;
+}
+
+#add-movie-section > p {
+    color: #b7bbce;
+}
+
+.add-movie-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 22px;
+}
+
+#add-movie-form label {
+    display: block;
+    color: #d1d5e5;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+#add-movie-form input {
+    display: block;
+    width: 100%;
+    margin-top: 8px;
+    padding: 12px;
+    background: #171a28;
+    color: white;
+    border: 1px solid #353a50;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+#add-movie-form input:focus {
+    outline: 2px solid #8b78e6;
+    border-color: transparent;
+}
+
+.add-movie-grid .full-width {
+    grid-column: 1 / -1;
+}
+
+#add-movie-form button {
+    width: auto;
+    margin-top: 22px;
+}
+
+#add-movie-status {
+    color: #c4b5fd;
+    overflow-wrap: anywhere;
+}
+
+@media (max-width: 600px) {
+    .add-movie-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .add-movie-grid .full-width {
+        grid-column: auto;
+    }
+
+    #add-movie-form button {
+        width: 100%;
+    }
+}

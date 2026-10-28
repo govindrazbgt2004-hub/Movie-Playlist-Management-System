@@ -1,0 +1,408 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CineQueue | Movie Playlist</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>CineQueue</h1>
+
+        <nav>
+            <a href="#movies">Explore Movies</a>
+            <a href="#playlist">My Playlist</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <section id="home">
+            <p>YOUR PERSONAL MOVIE SPACE</p>
+
+            <h2>Every movie. One playlist.</h2>
+
+            <p>
+                Discover movies and create your own
+                watchlist in one place.
+            </p>
+        </section>
+
+<section id="add-movie-section">
+
+    <h2>Add a New Movie</h2>
+
+    <p>Add a movie to your CineQueue catalogue.</p>
+
+    <form id="add-movie-form">
+
+        <div class="add-movie-grid">
+
+            <label for="new-movie-title">
+                Movie Title
+                <input
+                    type="text"
+                    id="new-movie-title"
+                    maxlength="80"
+                    placeholder="Example: The Dark Knight"
+                    required
+                >
+            </label>
+
+            <label for="new-movie-genre">
+                Genre
+                <input
+                    type="text"
+                    id="new-movie-genre"
+                    maxlength="40"
+                    placeholder="Example: Action"
+                    required
+                >
+            </label>
+
+            <label for="new-movie-year">
+                Release Year
+                <input
+                    type="number"
+                    id="new-movie-year"
+                    min="1888"
+                    max="2100"
+                    placeholder="Example: 2008"
+                    required
+                >
+            </label>
+
+            <label for="new-movie-duration">
+                Duration (minutes)
+                <input
+                    type="number"
+                    id="new-movie-duration"
+                    min="1"
+                    max="600"
+                    placeholder="Example: 152"
+                    required
+                >
+            </label>
+
+            <label class="full-width" for="new-movie-poster">
+                Poster Image URL
+                <input
+                    type="url"
+                    id="new-movie-poster"
+                    placeholder="https://example.com/poster.jpg"
+                    required
+                >
+            </label>
+
+        </div>
+
+        <button type="submit">Add Movie to Catalogue</button>
+
+        <p id="add-movie-status" role="status">
+            Enter the movie details above.
+        </p>
+
+    </form>
+
+</section>
+
+        <section id="movies">
+
+            <h2>Explore Movies</h2>
+
+            <label for="movie-search">Search movies:</label>
+            <input
+                type="search"
+                id="movie-search"
+                placeholder="Enter a movie name"
+            >
+
+<div id="sort-controls">
+    <h3>Sort Movie Catalogue</h3>
+
+    <p>Arrange movies alphabetically using different algorithms.</p>
+
+    <div class="sort-buttons">
+        <button id="sort-merge" type="button">
+            Sort with Merge Sort
+        </button>
+
+        <button id="sort-quick" type="button">
+            Sort with Quick Sort
+        </button>
+
+        <button id="sort-reset" type="button">
+            Reset Original Order
+        </button>
+    </div>
+
+    <p id="sort-status" role="status">
+        Choose a sorting algorithm to begin.
+    </p>
+</div>
+
+            <div class="movie-list">
+
+                <article class="movie-card">
+                    <div class="poster">
+
+<div class="poster">
+    <img
+        src="https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg"
+        alt="Interstellar movie poster"
+        loading="lazy"
+    >
+</div>
+
+  </div>
+                    <h3>Interstellar</h3>
+                    <p>Science Fiction · 2014</p>
+                    <p>Duration: 169 minutes</p>
+                    <button type="button">Add to Playlist</button>
+                </article>
+
+                <article class="movie-card">
+                    <div class="poster">
+
+<div class="poster">
+    <img
+        src="https://image.tmdb.org/t/p/w500/xlaY2zyzMfkhk0HSC5VUwzoZPU1.jpg"
+        alt="Inception movie poster"
+        loading="lazy"
+    >
+</div>
+
+  </div>
+                    <h3>Inception</h3>
+                    <p>Thriller · 2010</p>
+                    <p>Duration: 148 minutes</p>
+                    <button type="button">Add to Playlist</button>
+                </article>
+
+                <article class="movie-card">
+                    <div class="poster">
+<div class="poster">
+    <img
+        src="https://miro.medium.com/1%2AykoSilpU1bXjXOumImNsgw.jpeg"
+        alt="3 Idiots movie poster"
+        loading="lazy"
+    >
+</div>
+  </div>
+                    <h3>3 Idiots</h3>
+                    <p>Comedy · 2009</p>
+                    <p>Duration: 170 minutes</p>
+                    <button type="button">Add to Playlist</button>
+                </article>
+
+            </div>
+        </section>
+<section id="upcoming-queue">
+
+    <h2>Upcoming Queue</h2>
+
+    <p>Movies will play in the order they are added.</p>
+
+    <div id="queue-items">
+        <p>Queue is empty. Add a movie to get started!</p>
+    </div>
+
+    <p id="queue-summary">Queued movies: 0</p>
+
+    <button id="play-next-button" type="button" disabled>
+        Play Next Movie
+    </button>
+
+</section>
+<section id="movie-tree">
+
+    <h2>Movie Tree Explorer</h2>
+
+    <p>
+        Explore movie titles using a Binary Search Tree.
+    </p>
+
+    <div id="tree-controls">
+        <button id="tree-inorder">Inorder (A–Z)</button>
+        <button id="tree-preorder">Preorder</button>
+        <button id="tree-postorder">Postorder</button>
+    </div>
+
+    <h3>Traversal Results</h3>
+
+    <ol id="tree-results">
+        <li>Click a traversal button to explore the tree.</li>
+    </ol>
+
+    <h3>Search in BST</h3>
+
+    <input
+        type="text"
+        id="tree-search-input"
+        placeholder="Enter a movie title"
+    >
+
+    <button id="tree-search-button">
+        Search Movie
+    </button>
+
+    <p id="tree-search-result">
+        Search for a movie in the tree.
+    </p>
+
+</section>
+
+<section id="movie-graph">
+
+    <h2>Movie Graph Explorer</h2>
+
+    <p>
+        Explore movie connections using BFS and DFS.
+    </p>
+
+    <label for="graph-start">Choose starting movie:</label>
+
+    <select id="graph-start">
+        <option value="Interstellar">Interstellar</option>
+        <option value="Inception">Inception</option>
+        <option value="3 Idiots">3 Idiots</option>
+        <option value="The Martian">The Martian (Demo Node)</option>
+    </select>
+
+    <div id="graph-controls">
+        <button id="run-bfs" type="button">Run BFS</button>
+        <button id="run-dfs" type="button">Run DFS</button>
+    </div>
+
+    <h3>Traversal Results</h3>
+
+    <ol id="graph-results">
+        <li>Select a starting movie and run a traversal.</li>
+    </ol>
+
+    <p id="graph-info">
+        The Martian is an additional demo node used to demonstrate traversal order.
+    </p>
+
+</section>
+<section id="playlist">
+    <h2>My Playlist</h2>
+    <button id="undo-button" type="button" disabled>
+    Undo Last Addition
+</button>
+
+    <div id="playlist-items">
+        <p>Your playlist is empty. Add your favourite movies to get started!</p>
+    </div>
+
+    <p id="playlist-summary">
+        Total movies: 0 | Total duration: 0 minutes
+    </p>
+
+</section>
+
+<section id="algorithm-search">
+
+    <h2>Search Algorithms Explorer</h2>
+
+    <p>
+        Search for a movie using Linear Search or Binary Search.
+    </p>
+
+    <label for="algorithm-search-input">
+        Enter movie title:
+    </label>
+
+    <input
+        type="text"
+        id="algorithm-search-input"
+        placeholder="Example: Inception"
+    >
+
+    <div class="algorithm-search-buttons">
+
+        <button id="linear-search-button" type="button">
+            Run Linear Search
+        </button>
+
+        <button id="binary-search-button" type="button">
+            Run Binary Search
+        </button>
+
+    </div>
+
+    <p id="algorithm-search-result" role="status">
+        Enter a movie title to begin searching.
+    </p>
+
+</section>
+
+<section id="marathon-planner">
+
+    <h2>Movie Marathon Planner</h2>
+
+    <p>
+        Plan your movie marathon according to your available time.
+    </p>
+
+    <label for="available-minutes">
+        Available watch-time (minutes):
+    </label>
+
+    <input
+        type="number"
+        id="available-minutes"
+        min="1"
+        step="1"
+        value="320"
+        placeholder="Enter available minutes"
+    >
+
+    <button id="plan-marathon" type="button">
+        Generate Movie Plan
+    </button>
+
+    <p id="marathon-summary" role="status">
+        Enter your available time and generate a plan.
+    </p>
+
+    <h3>Selected Movies</h3>
+
+    <ul id="marathon-selected">
+        <li>Your selected movies will appear here.</li>
+    </ul>
+
+    <h3>Movies Not Selected</h3>
+
+    <ul id="marathon-skipped">
+        <li>Movies that do not fit will appear here.</li>
+    </ul>
+
+</section>
+
+    </main>
+
+    <footer>
+        <p>CineQueue | Movie Playlist Management System</p>
+    </footer>
+
+
+<script src="js/datastructures/LinkedList.js"></script>
+<script src="js/datastructures/Stack.js"></script>
+<script src="js/datastructures/Queue.js"></script>
+<script src="js/datastructures/BinarySearchTree.js"></script>
+<script src="js/datastructures/Graph.js"></script>
+<script src="js/algorithms/search.js"></script>
+<script src="js/algorithms/sort.js"></script>
+<script src="js/algorithms/greedyPlanner.js"></script>
+<script src="js/main.js"></script>
+<script src="js/addMovie.js"></script>
+</body>
+</html>
+
