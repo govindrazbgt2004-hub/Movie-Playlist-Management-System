@@ -32,3 +32,33 @@ built while learning web development.
 ## Project Purpose
 To learn web development by implementing Data Structures
 and Algorithms in a practical movie playlist application.
+
+## Author
+
+**Developed by:** Govind Kumar
+
+**Programme:** Master of Computer Applications (MCA)
+
+**Course:** 26MCC1L211 — Data Structures and Algorithms Practical
+
+**Institution:** Kristu Jayanti Deemed to be University, Bengaluru
+
+**Academic Session:** 2026–2028
+
+## Copyright
+
+Copyright (c) 2026 Govind Kumar.
+
+CineQueue is an academic project developed to practise
+web development and Data Structures and Algorithms.
+
+Please contact the author before reusing or redistributing
+this project's original source code or design.
+
+## Technologies
+
+- HTML
+- CSS
+- JavaScript
+- Local Storage
+- Git and GitHub
